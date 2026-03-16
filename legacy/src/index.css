@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  
+  --color-brand-navy: #0A2A54;
+  --color-brand-gold: #FDB813;
+  --color-brand-gold-dark: #E59400;
+  --color-brand-blue: #1E40AF;
+  --color-brand-slate: #F8FAFC;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    height: 100%;
+    @apply antialiased;
+  }
+  body {
+    @apply bg-white text-slate-900 font-sans h-full overflow-x-hidden;
+  }
+  #root {
+    @apply h-full flex flex-col;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-brand-navy font-display tracking-tight;
+  }
+  
+  section {
+    @apply scroll-mt-24;
+  }
+  
+  /* Global Focus States */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-gold ring-offset-2;
+  }
+  
+  input, textarea, select {
+    @apply focus:ring-2 focus:ring-brand-gold focus:border-brand-gold outline-none;
+  }
+}
+
+.glass-header {
+  @apply bg-white/80 backdrop-blur-md border-b border-slate-200/50 shadow-sm;
+}
+
+.glass-card {
+  @apply bg-white border border-slate-200/60 rounded-2xl shadow-[0_2px_10px_-3px_rgba(0,0,0,0.07)] hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.1)] transition-all duration-500;
+}
+
+.section-padding {
+  @apply py-24 px-6 md:px-12 lg:px-24;
+}
+
+.btn-primary {
+  @apply bg-brand-navy text-brand-gold px-8 py-3 rounded-full font-bold transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-brand-navy/10 hover:shadow-brand-gold/20 hover:bg-brand-gold hover:text-brand-navy focus-visible:ring-brand-gold;
+}
+
+.btn-secondary {
+  @apply border-2 border-brand-navy/10 bg-white text-brand-navy px-8 py-3 rounded-full font-bold transition-all duration-300 transform hover:-translate-y-1 hover:border-brand-navy hover:bg-brand-navy/5 focus-visible:ring-brand-gold;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-brand-navy via-brand-navy to-brand-blue;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
